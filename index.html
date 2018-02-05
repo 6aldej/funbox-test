@@ -7,6 +7,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/5.0.0/mocha.min.css">
     </head>
     <body>
         <!--[if lte IE 9]>
@@ -15,11 +16,12 @@
 
         <h1>fun-box.ru тестовое задание</h1>
 
-        <div id="app">
-            <div class="form is-loading">
+        <div id="app" class="app-container is-loading">
+            <div class="form">
                 <div class="form__list">
                     <label>Добавить новую точку</label>
                     <input type="text" v-model="newPointName" v-on:keyup.enter="addNewPoint(newPointName)">
+                    <br/>
                     <small v-if="errEmptyName">Точку без названия - низяяя!</small>
 
                     <label>Список точек:</label>
@@ -39,6 +41,11 @@
                     </div>
                 </div>
             </div>
+
+
+            <!-- Для юнит-тестирования -->
+            <a role="button" class="ut-toggle" v-on:click="unitTests = !unitTests" v-on:click.once="runUnitTests">{{ unitTests ? "hide" : "show" }} unit-tests</a>
+            <div id="mocha" v-show="unitTests"></div>
         </div>
 
 
@@ -52,6 +59,10 @@
         <!-- Для перетаскивания элементов списка не стал придумывать велосипед, взял готовое решение -->
         <script src="https://cdn.jsdelivr.net/sortable/1.4.2/Sortable.min.js"></script>
         <script src="https://cdn.rawgit.com/David-Desmaisons/Vue.Draggable/master/dist/vuedraggable.js"></script>
+
+        <!-- Для тестов -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/5.0.0/mocha.min.js"></script>
+        <script src="https://cdn.rawgit.com/Automattic/expect.js/0.3.1/index.js"></script>
 
         <script src="./scripts.js"></script>
     </body>
