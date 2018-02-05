@@ -1,0 +1,58 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>fun-box.ru тестовое задание</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+        <h1>fun-box.ru тестовое задание</h1>
+
+        <div id="app">
+            <div class="form is-loading">
+                <div class="form__list">
+                    <label>Добавить новую точку</label>
+                    <input type="text" v-model="newPointName" v-on:keyup.enter="addNewPoint(newPointName)">
+                    <small v-if="errEmptyName">Точку без названия - низяяя!</small>
+
+                    <label>Список точек:</label>
+                    <ol class="list">
+                        <draggable v-model="points">
+                            <li v-for="point, index in points" class="list__item">
+                                {{ point.name }}
+                                <a class="list__rm" v-on:click="removePoint(index)">удалить</a>
+                            </li>
+                        </draggable>
+                    </ol>
+                </div>
+
+                <div class="form__map">
+                    <div class="map">
+                        <div id="map" class="map__inner"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- API Яндекс-карт -->
+        <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+
+        <!-- Реакт пока что знаю плохо. Да и vue - тоже... Но всё-таки с ним попроще, да и можно уместить всё в один html-файл ;) -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+
+        <!-- Для перетаскивания элементов списка не стал придумывать велосипед, взял готовое решение -->
+        <script src="https://cdn.jsdelivr.net/sortable/1.4.2/Sortable.min.js"></script>
+        <script src="https://cdn.rawgit.com/David-Desmaisons/Vue.Draggable/master/dist/vuedraggable.js"></script>
+
+        <script src="./scripts.js"></script>
+    </body>
+</html>

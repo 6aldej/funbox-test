@@ -1,0 +1,112 @@
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+html {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    padding: 2rem;
+}
+
+h1 {
+    margin: 0 0 2rem;
+}
+
+label {
+    font-size: 1.2em;
+    margin: 2rem 0 1rem;
+    display: block;
+}
+
+label:first-child {
+    margin-top: 0;
+}
+
+.form {
+    margin: 2rem 0;
+}
+
+.form.is-loading:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    box-sizing: border-box;
+    left: 50%;
+    width: 2em;
+    margin-left: -1em;
+    height: 2em;
+    top: 50%;
+    margin-top: -1em;
+    border-left: 0.2em solid rgba(0,0,0,0.15);
+    border-right: 0.2em solid rgba(0,0,0,0.15);
+    border-bottom: 0.2em solid rgba(0,0,0,0.15);
+    border-top: 0.2em solid rgba(0,0,0,0.8);
+    border-radius: 100%;
+    animation: rotation 0.6s infinite linear;
+}
+
+.form.is-loading > * {
+    visibility: hidden;
+}
+
+.map {
+    background-color: #ccc;
+    position: relative;
+}
+
+.map:before {
+    content: "";
+    display: block;
+    padding-top: 66.6%;
+}
+
+.map__inner {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    outline: 1px solid #ccc;
+}
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.form__list {
+    width: 40%;
+}
+
+.form__map {
+    flex: 1 1 auto;
+    margin-left: 2rem;
+}
+
+.list__item {
+    margin: 0.7rem 0;
+    cursor: move;
+}
+
+.list__rm {
+    color: #ff8181;
+    font-style: italic;
+    font-size: 0.8em;
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+.list__rm:hover {
+    color: #f00;
+}
